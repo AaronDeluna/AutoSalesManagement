@@ -11,7 +11,7 @@ import org.autosales.exception.CountryFactoryNotEqualException;
  * Конвеер автомобилей, собирает их.
  */
 public class AssemblyLine {
-    private static final boolean IS_IN_MOTION = false;
+    private static final boolean IS_IN_MOTION_CARS = false;
     /**
      * Данные для Camry.
      */
@@ -59,80 +59,76 @@ public class AssemblyLine {
     }
 
     /**
-     * Создает и возвращает новый объект {@link Camry}.
+     * Создает объект {@link Camry} с заданными параметрами.
      *
-     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code CAMRY_COMPONENT_FACTORY_COUNTRY}.
-     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
-     * Если страны совпадают, создается новый объект {@link Camry} с предопределенными параметрами и возвращается.
-     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     * Метод использует {@link ComponentFactory} с константой {@code CAMRY_COMPONENT_FACTORY_COUNTRY}.
+     * Проверяет соответствие страны фабрики и заданной стране {@code country}. Если страны совпадают,
+     * возвращает новый объект {@link Camry}. В противном случае выбрасывает {@link CountryFactoryNotEqualException}.
      *
-     * @return новый объект {@link Camry} с заданными параметрами, если страна фабрики совпадает с заданной страной.
-     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     * @return объект {@link Camry}, если страны совпадают.
+     * @throws CountryFactoryNotEqualException если страны не совпадают.
      */
     public Camry createCamry() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(CAMRY_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
-            return new Camry(CAMRY_COLOR, CAMRY_MAX_SPEED, GearboxType.AUTOMATIC, IS_IN_MOTION,
+            return new Camry(CAMRY_COLOR, CAMRY_MAX_SPEED, GearboxType.AUTOMATIC, IS_IN_MOTION_CARS,
                     componentFactory.createComponent(), CAMRY_COUNTRY, CAMRY_CRUISE_CONTROL, CAMRY_AVAILABILITY_USB);
         }
         throw new CountryFactoryNotEqualException();
     }
 
     /**
-     * Создает и возвращает новый объект {@link Solara}.
+     * Создает объект {@link Solara} с заданными параметрами.
      *
-     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code SOLAR_COMPONENT_FACTORY_COUNTRY}.
-     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
-     * Если страны совпадают, создается новый объект {@link Solara} с предопределенными параметрами и возвращается.
-     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     * Метод использует {@link ComponentFactory} с константой {@code SOLAR_COMPONENT_FACTORY_COUNTRY}.
+     * Проверяет соответствие страны фабрики и заданной стране {@code country}. Если страны совпадают,
+     * возвращает новый объект {@link Solara}. В противном случае выбрасывает {@link CountryFactoryNotEqualException}.
      *
-     * @return новый объект {@link Solara} с заданными параметрами, если страна фабрики совпадает с заданной страной.
-     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     * @return объект {@link Solara}, если страны совпадают.
+     * @throws CountryFactoryNotEqualException если страны не совпадают.
      */
     public Solara createSolar() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(SOLAR_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
-            return new Solara(SOLAR_COLOR, SOLAR_MAX_SPEED, GearboxType.MANUAL, IS_IN_MOTION,
+            return new Solara(SOLAR_COLOR, SOLAR_MAX_SPEED, GearboxType.MANUAL, IS_IN_MOTION_CARS,
                     componentFactory.createComponent(), SOLAR_COUNTRY, SOLAR_ROOF_ENABLE, SOLAR_MINI_FRIDGE);
         }
         throw new CountryFactoryNotEqualException();
     }
 
     /**
-     * Создает и возвращает новый объект {@link Hiance}.
+     * Создает объект {@link Hiance} с заданными параметрами.
      *
-     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code HIANCE_COMPONENT_FACTORY_COUNTRY}.
-     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
-     * Если страны совпадают, создается новый объект {@link Hiance} с предопределенными параметрами и возвращается.
-     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     * Метод использует {@link ComponentFactory} с константой {@code HIANCE_COMPONENT_FACTORY_COUNTRY}.
+     * Проверяет соответствие страны фабрики и заданной стране {@code country}. Если страны совпадают,
+     * возвращает новый объект {@link Hiance}. В противном случае выбрасывает {@link CountryFactoryNotEqualException}.
      *
-     * @return новый объект {@link Hiance} с заданными параметрами, если страна фабрики совпадает с заданной страной.
-     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     * @return объект {@link Hiance}, если страны совпадают.
+     * @throws CountryFactoryNotEqualException если страны не совпадают.
      */
     public Hiance createHiance() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(HIANCE_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
-            return new Hiance(HIANCE_COLOR, HIANCE_MAX_SPEED, GearboxType.MANUAL, IS_IN_MOTION,
+            return new Hiance(HIANCE_COLOR, HIANCE_MAX_SPEED, GearboxType.MANUAL, IS_IN_MOTION_CARS,
                     componentFactory.createComponent(), HIANCE_COUNTRY, HIANCE_SPARE_TIRE, HIANCE_LOAD_CAPACITY);
         }
         throw new CountryFactoryNotEqualException();
     }
 
     /**
-     * Создает и возвращает новый объект {@link Dyna}.
+     * Создает объект {@link Dyna} с заданными параметрами.
      *
-     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code DYNA_COMPONENT_FACTORY_COUNTRY}.
-     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
-     * Если страны совпадают, создается новый объект {@link Dyna} с предопределенными параметрами и возвращается.
-     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     * Метод использует {@link ComponentFactory} с константой {@code DYNA_COMPONENT_FACTORY_COUNTRY}.
+     * Проверяет соответствие страны фабрики и заданной стране {@code country}. Если страны совпадают,
+     * возвращает новый объект {@link Dyna}. В противном случае выбрасывает {@link CountryFactoryNotEqualException}.
      *
-     * @return новый объект {@link Dyna} с заданными параметрами, если страна фабрики совпадает с заданной страной.
-     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     * @return объект {@link Dyna}, если страны совпадают.
+     * @throws CountryFactoryNotEqualException если страны не совпадают.
      */
     public Dyna createDyna() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(DYNA_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
-            return new Dyna(DYNA_COLOR, DYNA_MAX_SPEED, GearboxType.MANUAL, IS_IN_MOTION,
+            return new Dyna(DYNA_COLOR, DYNA_MAX_SPEED, GearboxType.MANUAL, IS_IN_MOTION_CARS,
                     componentFactory.createComponent(), DYNA_COUNTRY, DYNA_POWER_OUTLET, DYNA_LOAD_CAPACITY);
         }
         throw new CountryFactoryNotEqualException();
