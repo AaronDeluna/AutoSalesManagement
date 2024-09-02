@@ -16,7 +16,7 @@ public class CarInventoryManager<T extends Car> {
     /**
      * Добавляем Cars в список.
      *
-     * @param car объект который, нужно добавить
+     * @param car объект который, нужно добавить в список
      */
     public void addCar(T car) throws WarehouseFullException {
         if (availableSeats > INVALID_AVAILABLE_SEATS) {
