@@ -4,7 +4,7 @@ import org.autosales.cars.component.Component;
 import org.autosales.enums.GearboxType;
 
 /**
- * кабриолет
+ * Кабриолет.
  */
 public class Solara extends Car {
     private boolean isRoofOpenable;

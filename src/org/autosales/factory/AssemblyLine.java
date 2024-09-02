@@ -8,11 +8,11 @@ import org.autosales.enums.GearboxType;
 import org.autosales.exception.CountryFactoryNotEqualException;
 
 /**
- * Конвеер автомобилей, соберает их
+ * Конвеер автомобилей, соберает их.
  */
 public class AssemblyLine {
     private String country;
-    private ComponentFactory componentFactory;
+    private ComponentFactory componentFactory = new ComponentFactory("Япония");
 
     public AssemblyLine(String country) {
         this.country = country;

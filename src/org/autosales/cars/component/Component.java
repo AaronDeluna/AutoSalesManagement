@@ -1,7 +1,7 @@
 package org.autosales.cars.component;
 
 /**
- * Компоненты машины
+ * Компоненты машины.
  */
 public class Component {
     private int numberOfWheels;

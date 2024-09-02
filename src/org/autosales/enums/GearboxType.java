@@ -1,7 +1,7 @@
 package org.autosales.enums;
 
 /**
- * Коробка передач
+ * Коробка передач.
  */
 public enum GearboxType {
     MANUAL("Механика"),

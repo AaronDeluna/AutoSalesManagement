@@ -4,7 +4,7 @@ import org.autosales.cars.component.Component;
 import org.autosales.enums.GearboxType;
 
 /**
- * грузовой фургон
+ * грузовой фургон.
  */
 public class Hiance extends Car {
     private boolean hasSpareTire;
@@ -36,14 +36,14 @@ public class Hiance extends Car {
 
     @Override
     public String toString() {
-        return "Hiance{" +
-                "hasSpareTire=" + hasSpareTire +
-                ", loadCapacity=" + loadCapacity +
-                ", color='" + color + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                ", gearboxType=" + gearboxType +
-                ", isInMotion=" + isInMotion +
-                ", component=" + component +
-                '}';
+        return "Hiance{"
+                + "hasSpareTire=" + hasSpareTire
+                + ", loadCapacity=" + loadCapacity
+                + ", color='" + color + '\''
+                + ", maxSpeed=" + maxSpeed
+                + ", gearboxType=" + gearboxType
+                + ", isInMotion=" + isInMotion
+                + ", component=" + component
+                + '}';
     }
 }

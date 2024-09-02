@@ -3,16 +3,15 @@ package org.autosales.factory;
 import org.autosales.cars.component.Component;
 
 /**
- * Фабрика по изготавлению компонентов
+ * Фабрика по изготавлению компонентов.
  */
 public class ComponentFactory {
-    private String country;
-
     private static final int NUMBER_OF_WHEELS = 4;
     private static final int CAPACITY = 40;
     private static final boolean ENGINE_OPERATIONAL = true;
     private static final boolean IS_ELECTRICS_FUNCTIONAL = true;
     private static final boolean IS_LIGHTS_FUNCTIONAL = true;
+    private String country;
 
     public ComponentFactory(String country) {
         this.country = country;

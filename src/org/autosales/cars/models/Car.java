@@ -4,6 +4,7 @@ import org.autosales.cars.component.Component;
 import org.autosales.enums.GearboxType;
 
 public abstract class Car {
+    protected int quantity;
     protected String color;
     protected int maxSpeed;
     protected GearboxType gearboxType;
@@ -22,7 +23,7 @@ public abstract class Car {
     }
 
     /**
-     * Начать движение
+     * Начать движение.
      */
     public void startMoving() {
         if (component.getCapacity() > 0) {
@@ -34,7 +35,7 @@ public abstract class Car {
     }
 
     /**
-     * Остановить движение
+     * Остановить движение.
      */
     public void stopMoving() {
         System.out.println("Машина остановила движение");
@@ -42,7 +43,7 @@ public abstract class Car {
     }
 
     /**
-     * Включить лампы
+     * Включить лампы.
      */
     public void headlightsOn() {
         System.out.println("Машина включила фары");
@@ -87,6 +88,22 @@ public abstract class Car {
 
     public void setComponent(Component component) {
         this.component = component;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Override

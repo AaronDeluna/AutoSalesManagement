@@ -4,7 +4,7 @@ import org.autosales.cars.component.Component;
 import org.autosales.enums.GearboxType;
 
 /**
- * грузовой фургон
+ * грузовой фургон.
  */
 public class Dyna extends Car {
     private boolean hasPowerOutlet;
@@ -44,14 +44,14 @@ public class Dyna extends Car {
 
     @Override
     public String toString() {
-        return "Dyna{" +
-                "hasPowerOutlet=" + hasPowerOutlet +
-                ", loadCapacity=" + loadCapacity +
-                ", color='" + color + '\'' +
-                ", maxSpeed=" + maxSpeed +
-                ", gearboxType=" + gearboxType +
-                ", isInMotion=" + isInMotion +
-                ", component=" + component +
-                '}';
+        return "Dyna{"
+                + "hasPowerOutlet=" + hasPowerOutlet
+                + ", loadCapacity=" + loadCapacity
+                + ", color='" + color + '\''
+                + ", maxSpeed=" + maxSpeed
+                + ", gearboxType=" + gearboxType
+                + ", isInMotion=" + isInMotion
+                + ", component=" + component
+                + '}';
     }
 }

@@ -63,6 +63,13 @@ public class Camry extends Car {
         return "Camry{" +
                 "isCruiseControl=" + isCruiseControl +
                 ", isAvailabilityUSB=" + isAvailabilityUSB +
+                ", quantity=" + quantity +
+                ", color='" + color + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                ", gearboxType=" + gearboxType +
+                ", isInMotion=" + isInMotion +
+                ", component=" + component +
+                ", country='" + country + '\'' +
                 '}';
     }
 }

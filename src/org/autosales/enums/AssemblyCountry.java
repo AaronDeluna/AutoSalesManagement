@@ -1,7 +1,7 @@
 package org.autosales.enums;
 
 /**
- * Страны производителя
+ * Страны производителя.
  */
 public enum AssemblyCountry {
 
