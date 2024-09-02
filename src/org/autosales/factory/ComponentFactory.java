@@ -3,7 +3,7 @@ package org.autosales.factory;
 import org.autosales.cars.component.Component;
 
 /**
- * Фабрика по изготавлению компонентов.
+ * Фабрика для создания компонентов.
  */
 public class ComponentFactory {
     private static final int NUMBER_OF_WHEELS = 4;
@@ -17,6 +17,11 @@ public class ComponentFactory {
         this.country = country;
     }
 
+    /**
+     * Создает и возвращает новый объект {@link Component}.
+     *
+     * @return новый объект {@link Component} с заданными характеристиками.
+     */
     public Component createComponent() {
         return new Component(NUMBER_OF_WHEELS, CAPACITY, ENGINE_OPERATIONAL,
                 IS_ELECTRICS_FUNCTIONAL, IS_LIGHTS_FUNCTIONAL);

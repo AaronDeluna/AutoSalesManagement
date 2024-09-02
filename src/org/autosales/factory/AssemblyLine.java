@@ -8,7 +8,7 @@ import org.autosales.enums.GearboxType;
 import org.autosales.exception.CountryFactoryNotEqualException;
 
 /**
- * Конвеер автомобилей, собирает их.
+ * Конвейер для сборки автомобилей.
  */
 public class AssemblyLine {
     private static final boolean IS_IN_MOTION_CARS = false;
