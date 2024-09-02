@@ -58,6 +58,17 @@ public class AssemblyLine {
         this.country = country;
     }
 
+    /**
+     * Создает и возвращает новый объект {@link Camry}.
+     *
+     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code CAMRY_COMPONENT_FACTORY_COUNTRY}.
+     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
+     * Если страны совпадают, создается новый объект {@link Camry} с предопределенными параметрами и возвращается.
+     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     *
+     * @return новый объект {@link Camry} с заданными параметрами, если страна фабрики совпадает с заданной страной.
+     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     */
     public Camry createCamry() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(CAMRY_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
@@ -67,7 +78,17 @@ public class AssemblyLine {
         throw new CountryFactoryNotEqualException();
     }
 
-
+    /**
+     * Создает и возвращает новый объект {@link Solara}.
+     *
+     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code SOLAR_COMPONENT_FACTORY_COUNTRY}.
+     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
+     * Если страны совпадают, создается новый объект {@link Solara} с предопределенными параметрами и возвращается.
+     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     *
+     * @return новый объект {@link Solara} с заданными параметрами, если страна фабрики совпадает с заданной страной.
+     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     */
     public Solara createSolar() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(SOLAR_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
@@ -77,6 +98,17 @@ public class AssemblyLine {
         throw new CountryFactoryNotEqualException();
     }
 
+    /**
+     * Создает и возвращает новый объект {@link Hiance}.
+     *
+     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code HIANCE_COMPONENT_FACTORY_COUNTRY}.
+     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
+     * Если страны совпадают, создается новый объект {@link Hiance} с предопределенными параметрами и возвращается.
+     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     *
+     * @return новый объект {@link Hiance} с заданными параметрами, если страна фабрики совпадает с заданной страной.
+     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     */
     public Hiance createHiance() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(HIANCE_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
@@ -86,7 +118,17 @@ public class AssemblyLine {
         throw new CountryFactoryNotEqualException();
     }
 
-
+    /**
+     * Создает и возвращает новый объект {@link Dyna}.
+     *
+     * Этот метод создает экземпляр {@link ComponentFactory} с использованием константы {@code DYNA_COMPONENT_FACTORY_COUNTRY}.
+     * Затем проверяет, соответствует ли страна фабрики заданной стране {@code country}.
+     * Если страны совпадают, создается новый объект {@link Dyna} с предопределенными параметрами и возвращается.
+     * Если страна фабрики не совпадает с заданной страной, метод выбрасывает {@link CountryFactoryNotEqualException}.
+     *
+     * @return новый объект {@link Dyna} с заданными параметрами, если страна фабрики совпадает с заданной страной.
+     * @throws CountryFactoryNotEqualException если страна фабрики не совпадает с заданной страной.
+     */
     public Dyna createDyna() throws CountryFactoryNotEqualException {
         ComponentFactory componentFactory = new ComponentFactory(DYNA_COMPONENT_FACTORY_COUNTRY);
         if (componentFactory.getCountry().equals(country)) {
