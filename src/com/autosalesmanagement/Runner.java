@@ -2,6 +2,7 @@ package com.autosalesmanagement;
 
 import com.autosalesmanagement.cars.passengercar.Camry;
 import com.autosalesmanagement.component.*;
+import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 
@@ -15,8 +16,10 @@ public class Runner {
         Engine engine = new Engine(true);
         Electric electric = new Electric(true);
         Headlights headlights = new Headlights(true);
-        Component component = new Component(wheels, gasTank, engine, electric, headlights,20000);
-        Camry camry = new Camry("Red", 200, TransmissionType.AUTOMATIC, false, component, Country.JAPAN, false, true);
+        Component component = new Component(wheels, gasTank, engine, electric, headlights, 20000);
+        Camry camry = new Camry(Color.RED, 200,
+                TransmissionType.AUTOMATIC, false, component,
+                Country.JAPAN, false, true);
         camry.startMoving();
         camry.stopMoving();
         camry.turnOnHeadlights();

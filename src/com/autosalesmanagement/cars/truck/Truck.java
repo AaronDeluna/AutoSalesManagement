@@ -1,6 +1,7 @@
 package com.autosalesmanagement.cars.truck;
 
 import com.autosalesmanagement.component.Component;
+import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 import com.autosalesmanagement.cars.Car;
@@ -12,7 +13,7 @@ import com.autosalesmanagement.cars.Car;
 public abstract class Truck extends Car {
     protected int maxLoadCapacityKg;
 
-    public Truck(String color, int maxSpeed,
+    public Truck(Color color, int maxSpeed,
                  TransmissionType transmissionType,
                  boolean isMoving, Component component,
                  Country country, int maxLoadCapacityKg) {

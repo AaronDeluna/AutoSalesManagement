@@ -1,6 +1,7 @@
 package com.autosalesmanagement.cars.passengercar;
 
 import com.autosalesmanagement.component.Component;
+import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 
@@ -11,7 +12,7 @@ import com.autosalesmanagement.enums.TransmissionType;
 public class Camry extends PassengerСar {
     private boolean hasUsbPort;
 
-    public Camry(String color, int maxSpeed,
+    public Camry(Color color, int maxSpeed,
                  TransmissionType transmissionType,
                  boolean isMoving, Component component,
                  Country country, boolean hasCruiseControl, boolean hasUsbPort) {

@@ -1,6 +1,7 @@
 package com.autosalesmanagement.cars.cabriolet;
 
 import com.autosalesmanagement.component.Component;
+import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 
@@ -11,7 +12,7 @@ import com.autosalesmanagement.enums.TransmissionType;
 public class Solara extends Cabriolet {
     private boolean hasMiniFridge;
 
-    public Solara(String color, int maxSpeed,
+    public Solara(Color color, int maxSpeed,
                   TransmissionType transmissionType,
                   boolean isMoving, Component component,
                   Country country, boolean isRoofUp, boolean hasMiniFridge) {

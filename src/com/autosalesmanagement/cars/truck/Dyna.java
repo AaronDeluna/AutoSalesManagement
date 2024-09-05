@@ -1,6 +1,7 @@
 package com.autosalesmanagement.cars.truck;
 
 import com.autosalesmanagement.component.Component;
+import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 
@@ -11,7 +12,7 @@ import com.autosalesmanagement.enums.TransmissionType;
 public class Dyna extends Truck {
     private boolean hasSocket;
 
-    public Dyna(String color, int maxSpeed,
+    public Dyna(Color color, int maxSpeed,
                 TransmissionType transmissionType,
                 boolean isMoving, Component component,
                 Country country, int maxLoadCapacityKg, boolean hasSocket) {

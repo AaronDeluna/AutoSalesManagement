@@ -1,6 +1,7 @@
 package com.autosalesmanagement.cars;
 
 import com.autosalesmanagement.component.Component;
+import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 import com.autosalesmanagement.exceptions.StartCarException;
@@ -10,7 +11,7 @@ import com.autosalesmanagement.exceptions.StartCarException;
  * Описывает основные характеристики автомобиля.
  */
 public abstract class Car {
-    protected String color;
+    protected Color color;
     protected int maxSpeed;
     protected TransmissionType transmissionType;
     protected boolean isMoving;
@@ -27,9 +28,10 @@ public abstract class Car {
      * @param component компонент автомобиля
      * @param country страна производства
      */
-    public Car(String color, int maxSpeed,
-               TransmissionType transmissionType, boolean isMoving,
-               Component component, Country country) {
+    public Car(Color color, int maxSpeed,
+               TransmissionType transmissionType,
+               boolean isMoving, Component component,
+               Country country) {
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmissionType = transmissionType;
@@ -69,11 +71,11 @@ public abstract class Car {
         component.setHeadlights(true);
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
