@@ -5,6 +5,8 @@ import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 
+import java.math.BigDecimal;
+
 /**
  * Класс Camry представляет конкретную модель пассажирского автомобиля.
  * Наследует от PassengerCar и добавляет поддержку USB-порта.
@@ -14,9 +16,9 @@ public class Camry extends PassengerСar {
 
     public Camry(Color color, int maxSpeed,
                  TransmissionType transmissionType,
-                 boolean isMoving, Component component,
-                 int price, Country country, boolean hasCruiseControl, boolean hasUsbPort) {
-        super(color, maxSpeed, transmissionType, isMoving, component, price, country, hasCruiseControl);
+                 Component component, BigDecimal price,
+                 Country country, boolean hasUsbPort) {
+        super(color, maxSpeed, transmissionType, component, price, country);
         this.hasUsbPort = hasUsbPort;
     }
 

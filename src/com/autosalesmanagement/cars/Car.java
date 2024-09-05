@@ -6,6 +6,8 @@ import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 import com.autosalesmanagement.exceptions.StartCarException;
 
+import java.math.BigDecimal;
+
 /**
  * Абстрактный класс Car.
  * Описывает основные характеристики автомобиля.
@@ -14,26 +16,26 @@ public abstract class Car {
     protected Color color;
     protected int maxSpeed;
     protected TransmissionType transmissionType;
-    protected boolean isMoving;
+    protected boolean isMoving = false;
     protected Component component;
-    protected int price;
+    protected BigDecimal price;
     protected Country country;
 
     /**
      * Конструктор автомобиля.
      *
-     * @param color цвет автомобиля
-     * @param maxSpeed максимальная скорость
+     * @param color            цвет автомобиля
+     * @param maxSpeed         максимальная скорость
      * @param transmissionType тип трансмиссии
-     * @param isMoving состояние движения
-     * @param component компонент автомобиля
-     * @param country страна производства
+     * @param component        компонент автомобиля
+     * @param country          страна производства
      */
-    public Car(Color color, int maxSpeed, TransmissionType transmissionType, boolean isMoving, Component component, int price, Country country) {
+    public Car(Color color, int maxSpeed,
+               TransmissionType transmissionType, Component component,
+               BigDecimal price, Country country) {
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmissionType = transmissionType;
-        this.isMoving = isMoving;
         this.component = component;
         this.price = price;
         this.country = country;
@@ -110,11 +112,11 @@ public abstract class Car {
         this.component = component;
     }
 
-    public int getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 

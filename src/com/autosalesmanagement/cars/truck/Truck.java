@@ -6,6 +6,8 @@ import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 import com.autosalesmanagement.cars.Car;
 
+import java.math.BigDecimal;
+
 /**
  * Абстрактный класс Truck.
  * Расширяет Car и добавляет поддержку грузоподъемности.
@@ -15,9 +17,8 @@ public abstract class Truck extends Car {
 
     public Truck(Color color, int maxSpeed,
                  TransmissionType transmissionType,
-                 boolean isMoving, Component component,
-                 int price, Country country, int maxLoadCapacityKg) {
-        super(color, maxSpeed, transmissionType, isMoving, component, price, country);
+                 Component component, BigDecimal price, Country country, int maxLoadCapacityKg) {
+        super(color, maxSpeed, transmissionType, component, price, country);
         this.maxLoadCapacityKg = maxLoadCapacityKg;
     }
 

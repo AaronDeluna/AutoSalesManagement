@@ -7,6 +7,8 @@ import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 import com.autosalesmanagement.enums.WheelDiameter;
 
+import java.math.BigDecimal;
+
 public class Runner {
     public static void main(String[] args) {
         Wheel[] wheels = new Wheel[4];
@@ -19,9 +21,8 @@ public class Runner {
         Headlights headlights = new Headlights(true);
         Component component = new Component(wheels, gasTank, engine, electric, headlights);
         Camry camry = new Camry(Color.RED, 200,
-                TransmissionType.AUTOMATIC, false,
-                component, 20000, Country.JAPAN,
-                true, true);
+                TransmissionType.AUTOMATIC, component,
+                new BigDecimal(20_000), Country.JAPAN, true);
         camry.startMoving();
         camry.stopMoving();
         camry.turnOnHeadlights();

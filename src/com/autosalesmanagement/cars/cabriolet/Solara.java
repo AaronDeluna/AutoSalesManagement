@@ -5,6 +5,8 @@ import com.autosalesmanagement.enums.Color;
 import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 
+import java.math.BigDecimal;
+
 /**
  * Класс Solara представляет конкретную модель кабриолета.
  * Наследует от Cabriolet и добавляет поддержку мини-холодильника.
@@ -14,9 +16,9 @@ public class Solara extends Cabriolet {
 
     public Solara(Color color, int maxSpeed,
                   TransmissionType transmissionType,
-                  boolean isMoving, Component component,
-                  int price, Country country, boolean isRoofUp, boolean hasMiniFridge) {
-        super(color, maxSpeed, transmissionType, isMoving, component, price, country, isRoofUp);
+                  Component component, BigDecimal price,
+                  Country country, boolean isRoofUp, boolean hasMiniFridge) {
+        super(color, maxSpeed, transmissionType, component, price, country, isRoofUp);
         this.hasMiniFridge = hasMiniFridge;
     }
 

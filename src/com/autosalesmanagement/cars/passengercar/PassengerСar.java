@@ -6,19 +6,20 @@ import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 import com.autosalesmanagement.cars.Car;
 
+import java.math.BigDecimal;
+
 /**
  * Абстрактный класс PassengerCar.
  * Наследует от Car и добавляет поддержку круиз-контроля.
  */
 public abstract class PassengerСar extends Car {
-    protected boolean hasCruiseControl;
+    protected boolean hasCruiseControl = true;
 
     public PassengerСar(Color color, int maxSpeed,
                         TransmissionType transmissionType,
-                        boolean isMoving, Component component,
-                        int price, Country country, boolean hasCruiseControl) {
-        super(color, maxSpeed, transmissionType, isMoving, component, price, country);
-        this.hasCruiseControl = hasCruiseControl;
+                        Component component, BigDecimal price,
+                        Country country) {
+        super(color, maxSpeed, transmissionType, component, price, country);
     }
 
     public void disableCruiseControl() {
@@ -41,5 +42,9 @@ public abstract class PassengerСar extends Car {
 
     public boolean isHasCruiseControl() {
         return hasCruiseControl;
+    }
+
+    public void setHasCruiseControl(boolean hasCruiseControl) {
+        this.hasCruiseControl = hasCruiseControl;
     }
 }

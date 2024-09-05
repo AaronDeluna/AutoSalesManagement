@@ -6,6 +6,8 @@ import com.autosalesmanagement.enums.Country;
 import com.autosalesmanagement.enums.TransmissionType;
 import com.autosalesmanagement.cars.Car;
 
+import java.math.BigDecimal;
+
 /**
  * Абстрактный класс Cabriolet.
  * Расширяет Car и добавляет поддержку состояния крыши.
@@ -15,9 +17,9 @@ public abstract class Cabriolet extends Car {
 
     public Cabriolet(Color color, int maxSpeed,
                      TransmissionType transmissionType,
-                     boolean isMoving, Component component,
-                     int price, Country country, boolean isRoofUp) {
-        super(color, maxSpeed, transmissionType, isMoving, component, price, country);
+                     Component component, BigDecimal price,
+                     Country country, boolean isRoofUp) {
+        super(color, maxSpeed, transmissionType, component, price, country);
         this.isRoofUp = isRoofUp;
     }
 
