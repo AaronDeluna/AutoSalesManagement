@@ -15,8 +15,8 @@ public class Dyna extends Truck {
     public Dyna(Color color, int maxSpeed,
                 TransmissionType transmissionType,
                 boolean isMoving, Component component,
-                Country country, int maxLoadCapacityKg, boolean hasSocket) {
-        super(color, maxSpeed, transmissionType, isMoving, component, country, maxLoadCapacityKg);
+                int price, Country country, int maxLoadCapacityKg, boolean hasSocket) {
+        super(color, maxSpeed, transmissionType, isMoving, component, price, country, maxLoadCapacityKg);
         this.hasSocket = hasSocket;
     }
 

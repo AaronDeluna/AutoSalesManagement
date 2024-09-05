@@ -1,10 +1,12 @@
 package com.autosalesmanagement.component;
 
+import com.autosalesmanagement.enums.WheelDiameter;
+
 public class Wheel {
     private boolean isPunctured;
-    private int diameter;
+    private WheelDiameter diameter;
 
-    public Wheel(boolean isPunctured, int diameter) {
+    public Wheel(boolean isPunctured, WheelDiameter diameter) {
         this.isPunctured = isPunctured;
         this.diameter = diameter;
     }
@@ -17,11 +19,11 @@ public class Wheel {
         isPunctured = punctured;
     }
 
-    public int getDiameter() {
+    public WheelDiameter getDiameter() {
         return diameter;
     }
 
-    public void setDiameter(int diameter) {
+    public void setDiameter(WheelDiameter diameter) {
         this.diameter = diameter;
     }
 }

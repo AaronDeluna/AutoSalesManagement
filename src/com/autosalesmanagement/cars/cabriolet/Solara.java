@@ -15,8 +15,8 @@ public class Solara extends Cabriolet {
     public Solara(Color color, int maxSpeed,
                   TransmissionType transmissionType,
                   boolean isMoving, Component component,
-                  Country country, boolean isRoofUp, boolean hasMiniFridge) {
-        super(color, maxSpeed, transmissionType, isMoving, component, country, isRoofUp);
+                  int price, Country country, boolean isRoofUp, boolean hasMiniFridge) {
+        super(color, maxSpeed, transmissionType, isMoving, component, price, country, isRoofUp);
         this.hasMiniFridge = hasMiniFridge;
     }
 

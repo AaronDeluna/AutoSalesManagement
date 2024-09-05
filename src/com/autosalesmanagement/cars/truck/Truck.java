@@ -16,8 +16,8 @@ public abstract class Truck extends Car {
     public Truck(Color color, int maxSpeed,
                  TransmissionType transmissionType,
                  boolean isMoving, Component component,
-                 Country country, int maxLoadCapacityKg) {
-        super(color, maxSpeed, transmissionType, isMoving, component, country);
+                 int price, Country country, int maxLoadCapacityKg) {
+        super(color, maxSpeed, transmissionType, isMoving, component, price, country);
         this.maxLoadCapacityKg = maxLoadCapacityKg;
     }
 

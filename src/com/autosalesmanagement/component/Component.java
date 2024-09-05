@@ -8,17 +8,15 @@ public class Component {
     private Engine engine;
     private Electric electric;
     private Headlights headlights;
-    private int price;
 
     public Component(Wheel[] wheels, GasTank gasTank,
                      Engine engine, Electric electric,
-                     Headlights headlights, int price) {
+                     Headlights headlights) {
         this.wheels = wheels;
         this.gasTank = gasTank;
         this.engine = engine;
         this.electric = electric;
         this.headlights = headlights;
-        this.price = price;
     }
 
     /**
@@ -91,11 +89,4 @@ public class Component {
         this.headlights.setFunctional(headlights);
     }
 
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
 }

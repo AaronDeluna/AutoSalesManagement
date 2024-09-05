@@ -16,8 +16,8 @@ public abstract class PassengerСar extends Car {
     public PassengerСar(Color color, int maxSpeed,
                         TransmissionType transmissionType,
                         boolean isMoving, Component component,
-                        Country country, boolean hasCruiseControl) {
-        super(color, maxSpeed, transmissionType, isMoving, component, country);
+                        int price, Country country, boolean hasCruiseControl) {
+        super(color, maxSpeed, transmissionType, isMoving, component, price, country);
         this.hasCruiseControl = hasCruiseControl;
     }
 

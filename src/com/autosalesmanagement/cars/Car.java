@@ -16,6 +16,7 @@ public abstract class Car {
     protected TransmissionType transmissionType;
     protected boolean isMoving;
     protected Component component;
+    protected int price;
     protected Country country;
 
     /**
@@ -28,15 +29,13 @@ public abstract class Car {
      * @param component компонент автомобиля
      * @param country страна производства
      */
-    public Car(Color color, int maxSpeed,
-               TransmissionType transmissionType,
-               boolean isMoving, Component component,
-               Country country) {
+    public Car(Color color, int maxSpeed, TransmissionType transmissionType, boolean isMoving, Component component, int price, Country country) {
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmissionType = transmissionType;
         this.isMoving = isMoving;
         this.component = component;
+        this.price = price;
         this.country = country;
     }
 
@@ -109,6 +108,14 @@ public abstract class Car {
 
     public void setComponent(Component component) {
         this.component = component;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public Country getCountry() {

@@ -15,8 +15,8 @@ public class Hiance extends Truck {
     public Hiance(Color color, int maxSpeed,
                   TransmissionType transmissionType,
                   boolean isMoving, Component component,
-                  Country country, int maxLoadCapacityKg, boolean hasSpareWheel) {
-        super(color, maxSpeed, transmissionType, isMoving, component, country, maxLoadCapacityKg);
+                  int price, Country country, int maxLoadCapacityKg, boolean hasSpareWheel) {
+        super(color, maxSpeed, transmissionType, isMoving, component, price, country, maxLoadCapacityKg);
         this.hasSpareWheel = hasSpareWheel;
     }
 
