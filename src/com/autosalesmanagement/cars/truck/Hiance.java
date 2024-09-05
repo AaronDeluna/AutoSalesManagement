@@ -12,14 +12,13 @@ import java.math.BigDecimal;
  * Наследует от Truck и добавляет поддержку наличия запасного колеса.
  */
 public class Hiance extends Truck {
-    private boolean hasSpareWheel;
+    private boolean hasSpareWheel = true;
 
     public Hiance(Color color, int maxSpeed,
                   TransmissionType transmissionType,
                   Component component, BigDecimal price,
-                  Country country, int maxLoadCapacityKg, boolean hasSpareWheel) {
+                  Country country, int maxLoadCapacityKg) {
         super(color, maxSpeed, transmissionType, component, price, country, maxLoadCapacityKg);
-        this.hasSpareWheel = hasSpareWheel;
     }
 
     public boolean isHasSpareWheel() {

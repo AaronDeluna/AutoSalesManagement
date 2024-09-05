@@ -18,9 +18,8 @@ public abstract class Cabriolet extends Car {
     public Cabriolet(Color color, int maxSpeed,
                      TransmissionType transmissionType,
                      Component component, BigDecimal price,
-                     Country country, boolean isRoofUp) {
+                     Country country) {
         super(color, maxSpeed, transmissionType, component, price, country);
-        this.isRoofUp = isRoofUp;
     }
 
     public void openRoof() {

@@ -12,14 +12,12 @@ import java.math.BigDecimal;
  * Наследует от Cabriolet и добавляет поддержку мини-холодильника.
  */
 public class Solara extends Cabriolet {
-    private boolean hasMiniFridge;
+    private boolean hasMiniFridge = true;
 
     public Solara(Color color, int maxSpeed,
                   TransmissionType transmissionType,
-                  Component component, BigDecimal price,
-                  Country country, boolean isRoofUp, boolean hasMiniFridge) {
-        super(color, maxSpeed, transmissionType, component, price, country, isRoofUp);
-        this.hasMiniFridge = hasMiniFridge;
+                  Component component, BigDecimal price, Country country) {
+        super(color, maxSpeed, transmissionType, component, price, country);
     }
 
     public void coolDrink() {
