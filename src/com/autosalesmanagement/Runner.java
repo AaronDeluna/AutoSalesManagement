@@ -17,7 +17,7 @@ public class Runner {
         Engine engine = new Engine(true);
         Electric electric = new Electric(true);
         Headlights headlights = new Headlights(true);
-        Component component = new Component(wheels, gasTank, engine, electric, headlights, 20000);
+        Component component = new Component(wheels, gasTank, engine, electric, headlights);
         Camry camry = new Camry(Color.RED, 200,
                 TransmissionType.AUTOMATIC, false, component,
                 Country.JAPAN, false, true);
