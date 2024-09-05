@@ -15,7 +15,7 @@ public class Camry extends PassengerСar {
     public Camry(Color color, int maxSpeed,
                  TransmissionType transmissionType,
                  boolean isMoving, Component component,
-                 Country country, boolean hasCruiseControl, boolean hasUsbPort) {
+                 int price, Country country, boolean hasCruiseControl, boolean hasUsbPort) {
         super(color, maxSpeed, transmissionType, isMoving, component, price, country, hasCruiseControl);
         this.hasUsbPort = hasUsbPort;
     }

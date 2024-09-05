@@ -19,8 +19,9 @@ public class Runner {
         Headlights headlights = new Headlights(true);
         Component component = new Component(wheels, gasTank, engine, electric, headlights);
         Camry camry = new Camry(Color.RED, 200,
-                TransmissionType.AUTOMATIC, false, component,
-                Country.JAPAN, false, true);
+                TransmissionType.AUTOMATIC, false,
+                component, 20000, Country.JAPAN,
+                true, true);
         camry.startMoving();
         camry.stopMoving();
         camry.turnOnHeadlights();
