@@ -12,14 +12,13 @@ import java.math.BigDecimal;
  * Наследует от PassengerCar и добавляет поддержку USB-порта.
  */
 public class Camry extends PassengerСar {
-    private boolean hasUsbPort;
+    private boolean hasUsbPort = true;
 
     public Camry(Color color, int maxSpeed,
                  TransmissionType transmissionType,
                  Component component, BigDecimal price,
-                 Country country, boolean hasUsbPort) {
+                 Country country) {
         super(color, maxSpeed, transmissionType, component, price, country);
-        this.hasUsbPort = hasUsbPort;
     }
 
     public void connectMusic() {

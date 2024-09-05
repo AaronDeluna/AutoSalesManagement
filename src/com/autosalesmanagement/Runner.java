@@ -22,7 +22,7 @@ public class Runner {
         Component component = new Component(wheels, gasTank, engine, electric, headlights);
         Camry camry = new Camry(Color.RED, 200,
                 TransmissionType.AUTOMATIC, component,
-                new BigDecimal(20_000), Country.JAPAN, true);
+                new BigDecimal(20_000), Country.JAPAN);
         camry.startMoving();
         camry.stopMoving();
         camry.turnOnHeadlights();

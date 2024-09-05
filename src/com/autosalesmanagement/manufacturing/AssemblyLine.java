@@ -22,9 +22,9 @@ public class AssemblyLine {
         this.componentFactory = componentFactory;
     }
 
-    public Camry createCamry(Color color, int price) {
+    public Camry createCamry(Color color, BigDecimal price) {
         return new Camry(color, CAMRY_MAX_SPEED, TransmissionType.AUTOMATIC,
                 componentFactory.createAllComponents(WheelDiameter.DIAMETER_17_INCHES),
-                price, this.country, true, true);
+                price, this.country);
     }
 }
