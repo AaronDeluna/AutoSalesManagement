@@ -29,4 +29,8 @@ public class ComponentFactory {
         Headlights headlights = new Headlights(IS_WORKS);
         return new Component(wheels, gasTank, engine, electric, headlights);
     }
+
+    public Country getCountry() {
+        return country;
+    }
 }

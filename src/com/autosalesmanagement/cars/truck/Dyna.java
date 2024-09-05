@@ -12,14 +12,13 @@ import java.math.BigDecimal;
  * Наследует от Truck и добавляет поддержку наличия розетки.
  */
 public class Dyna extends Truck {
-    private boolean hasSocket;
+    private boolean hasSocket = true;
 
     public Dyna(Color color, int maxSpeed,
                 TransmissionType transmissionType,
                 Component component, BigDecimal price,
-                Country country, int maxLoadCapacityKg, boolean hasSocket) {
+                Country country, int maxLoadCapacityKg) {
         super(color, maxSpeed, transmissionType, component, price, country, maxLoadCapacityKg);
-        this.hasSocket = hasSocket;
     }
 
     public void chargePhone() {
