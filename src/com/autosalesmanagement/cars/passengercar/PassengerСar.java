@@ -21,13 +21,21 @@ public abstract class PassengerСar extends Car {
     }
 
     public void disableCruiseControl() {
-        System.out.println("Вы выключили круиз-контроль");
-        this.hasCruiseControl = false;
+        if (this.hasCruiseControl) {
+            System.out.println("Вы выключили круиз-контроль");
+            this.hasCruiseControl = false;
+        } else {
+            System.out.println("В машине нет круиз-контроля");
+        }
     }
 
     public void enableCruiseControl() {
-        System.out.println("Вы включили круиз-контроль");
-        this.hasCruiseControl = true;
+        if (this.hasCruiseControl) {
+            System.out.println("Вы включили круиз-контроль");
+            this.hasCruiseControl = true;
+        } else {
+            System.out.println("В машине нет круиз-контроля");
+        }
     }
 
     public boolean isHasCruiseControl() {
