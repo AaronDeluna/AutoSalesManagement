@@ -1,4 +1,4 @@
-package com.autosalesmanagement.enums;
+package com.autosalesmanagement.component;
 
 public enum TransmissionType {
     MANUAL,

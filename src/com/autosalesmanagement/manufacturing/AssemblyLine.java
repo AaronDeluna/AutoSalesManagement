@@ -4,10 +4,9 @@ import com.autosalesmanagement.cars.cabriolet.Solara;
 import com.autosalesmanagement.cars.passengercar.Camry;
 import com.autosalesmanagement.cars.truck.Dyna;
 import com.autosalesmanagement.cars.truck.Hiance;
-import com.autosalesmanagement.enums.Color;
-import com.autosalesmanagement.enums.Country;
-import com.autosalesmanagement.enums.TransmissionType;
-import com.autosalesmanagement.enums.WheelDiameter;
+import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.component.TransmissionType;
+import com.autosalesmanagement.component.WheelDiameter;
 import com.autosalesmanagement.exceptions.CountyFactoryNotEqualException;
 
 import java.math.BigDecimal;
@@ -42,9 +41,9 @@ public class AssemblyLine {
         if (componentFactory.getCountry().equals(country)) {
             return new Camry(color, CAMRY_MAX_SPEED, TransmissionType.AUTOMATIC,
                     componentFactory.createAllComponents(WheelDiameter.DIAMETER_17_INCHES),
-                    price, this.country);
+                    price, country);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), this.country);
+        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
     }
 
     /**
@@ -59,9 +58,9 @@ public class AssemblyLine {
         if (componentFactory.getCountry().equals(country)) {
             return new Solara(color, SOLARA_MAX_SPEED, TransmissionType.ROBOT,
                     componentFactory.createAllComponents(WheelDiameter.DIAMETER_16_INCHES),
-                    price, this.country);
+                    price, country);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), this.country);
+        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
     }
 
     /**
@@ -76,9 +75,9 @@ public class AssemblyLine {
         if (componentFactory.getCountry().equals(country)) {
             return new Hiance(color, HIANCE_MAX_SPEED, TransmissionType.MANUAL,
                     componentFactory.createAllComponents(WheelDiameter.DIAMETER_20_INCHES),
-                    price, this.country, HIANCE_MAX_LOAD_CAPACITY_KG);
+                    price, country, HIANCE_MAX_LOAD_CAPACITY_KG);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), this.country);
+        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
     }
 
     /**
@@ -93,8 +92,8 @@ public class AssemblyLine {
         if (componentFactory.getCountry().equals(country)) {
             return new Dyna(color, DYNA_MAX_SPEED, TransmissionType.MANUAL,
                     componentFactory.createAllComponents(WheelDiameter.DIAMETER_20_INCHES),
-                    price, this.country, DYNA_MAX_LOAD_CAPACITY_KG);
+                    price, country, DYNA_MAX_LOAD_CAPACITY_KG);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), this.country);
+        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
     }
 }

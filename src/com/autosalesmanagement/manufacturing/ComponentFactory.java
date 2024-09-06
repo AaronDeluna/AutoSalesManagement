@@ -1,8 +1,7 @@
 package com.autosalesmanagement.manufacturing;
 
 import com.autosalesmanagement.component.*;
-import com.autosalesmanagement.enums.Country;
-import com.autosalesmanagement.enums.WheelDiameter;
+import com.autosalesmanagement.component.WheelDiameter;
 
 /**
  * Фабрика для создания компонентов автомобиля.

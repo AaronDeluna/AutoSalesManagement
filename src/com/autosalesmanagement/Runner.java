@@ -2,10 +2,10 @@ package com.autosalesmanagement;
 
 import com.autosalesmanagement.cars.passengercar.Camry;
 import com.autosalesmanagement.component.*;
-import com.autosalesmanagement.enums.Color;
-import com.autosalesmanagement.enums.Country;
-import com.autosalesmanagement.enums.TransmissionType;
-import com.autosalesmanagement.enums.WheelDiameter;
+import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.manufacturing.Country;
+import com.autosalesmanagement.component.TransmissionType;
+import com.autosalesmanagement.component.WheelDiameter;
 
 import java.math.BigDecimal;
 

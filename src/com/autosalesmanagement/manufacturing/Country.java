@@ -1,4 +1,4 @@
-package com.autosalesmanagement.enums;
+package com.autosalesmanagement.manufacturing;
 
 public enum Country {
     USA,

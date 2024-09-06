@@ -1,7 +1,5 @@
 package com.autosalesmanagement.component;
 
-import com.autosalesmanagement.enums.WheelDiameter;
-
 public class Wheel {
     private boolean isPunctured;
     private WheelDiameter diameter;

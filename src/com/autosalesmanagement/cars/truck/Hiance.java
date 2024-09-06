@@ -1,9 +1,9 @@
 package com.autosalesmanagement.cars.truck;
 
 import com.autosalesmanagement.component.Component;
-import com.autosalesmanagement.enums.Color;
-import com.autosalesmanagement.enums.Country;
-import com.autosalesmanagement.enums.TransmissionType;
+import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.manufacturing.Country;
+import com.autosalesmanagement.component.TransmissionType;
 
 import java.math.BigDecimal;
 
