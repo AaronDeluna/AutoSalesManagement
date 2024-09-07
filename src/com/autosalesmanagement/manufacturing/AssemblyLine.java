@@ -25,14 +25,18 @@ public class AssemblyLine {
     private static final int DYNA_MAX_LOAD_CAPACITY_KG = 5000;
     private Country country;
     private ComponentFactory componentFactory;
-    private GasTank gasTank = componentFactory.createGasTank();
-    private Engine engine = componentFactory.createEngine();
-    private Electric electric = componentFactory.createElectric();
-    private Headlights headlights = componentFactory.createHeadlights();
+    private GasTank gasTank;
+    private Engine engine;
+    private Electric electric;
+    private Headlights headlights;
 
     public AssemblyLine(Country country, ComponentFactory componentFactory) {
         this.country = country;
         this.componentFactory = componentFactory;
+        gasTank = componentFactory.createGasTank();
+        engine = componentFactory.createEngine();
+        electric = componentFactory.createElectric();
+        headlights = componentFactory.createHeadlights();
     }
 
     /**
