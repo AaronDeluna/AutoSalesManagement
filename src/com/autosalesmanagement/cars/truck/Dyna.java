@@ -1,9 +1,7 @@
 package com.autosalesmanagement.cars.truck;
 
-import com.autosalesmanagement.component.Component;
-import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.component.*;
 import com.autosalesmanagement.manufacturing.Country;
-import com.autosalesmanagement.component.TransmissionType;
 
 import java.math.BigDecimal;
 
@@ -14,11 +12,10 @@ import java.math.BigDecimal;
 public class Dyna extends Truck {
     private boolean hasSocket = true;
 
-    public Dyna(Color color, int maxSpeed,
-                TransmissionType transmissionType,
-                Component component, BigDecimal price,
-                Country country, int maxLoadCapacityKg) {
-        super(color, maxSpeed, transmissionType, component, price, country, maxLoadCapacityKg);
+    public Dyna(Color color, int maxSpeed, TransmissionType transmissionType,
+                Wheel[] wheels, GasTank gasTank, Engine engine, Electric electric,
+                Headlights headlights, BigDecimal price, Country country, int maxLoadCapacityKg) {
+        super(color, maxSpeed, transmissionType, wheels, gasTank, engine, electric, headlights, price, country, maxLoadCapacityKg);
     }
 
     public void chargePhone() {

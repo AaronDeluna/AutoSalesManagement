@@ -1,9 +1,7 @@
 package com.autosalesmanagement.cars.cabriolet;
 
-import com.autosalesmanagement.component.Component;
-import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.component.*;
 import com.autosalesmanagement.manufacturing.Country;
-import com.autosalesmanagement.component.TransmissionType;
 
 import java.math.BigDecimal;
 
@@ -14,10 +12,10 @@ import java.math.BigDecimal;
 public class Solara extends Cabriolet {
     private boolean hasMiniFridge = true;
 
-    public Solara(Color color, int maxSpeed,
-                  TransmissionType transmissionType,
-                  Component component, BigDecimal price, Country country) {
-        super(color, maxSpeed, transmissionType, component, price, country);
+    public Solara(Color color, int maxSpeed, TransmissionType transmissionType,
+                  Wheel[] wheels, GasTank gasTank, Engine engine, Electric electric,
+                  Headlights headlights, BigDecimal price, Country country) {
+        super(color, maxSpeed, transmissionType, wheels, gasTank, engine, electric, headlights, price, country);
     }
 
     public void coolDrink() {

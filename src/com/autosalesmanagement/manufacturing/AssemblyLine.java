@@ -4,9 +4,7 @@ import com.autosalesmanagement.cars.cabriolet.Solara;
 import com.autosalesmanagement.cars.passengercar.Camry;
 import com.autosalesmanagement.cars.truck.Dyna;
 import com.autosalesmanagement.cars.truck.Hiance;
-import com.autosalesmanagement.component.Color;
-import com.autosalesmanagement.component.TransmissionType;
-import com.autosalesmanagement.component.WheelDiameter;
+import com.autosalesmanagement.component.*;
 import com.autosalesmanagement.exceptions.CountyFactoryNotEqualException;
 
 import java.math.BigDecimal;
@@ -15,6 +13,10 @@ import java.math.BigDecimal;
  * Класс AssemblyLine представляет сборочный конвейер для автомобилей.
  */
 public class AssemblyLine {
+    private static final WheelDiameter CAMRY_WHEELDIAMETER = WheelDiameter.DIAMETER_17_INCHES;
+    private static final WheelDiameter SOLARA_WHEELDIAMETER = WheelDiameter.DIAMETER_16_INCHES;
+    private static final WheelDiameter HIANCE_WHEELDIAMETER = WheelDiameter.DIAMETER_20_INCHES;
+    private static final WheelDiameter DYNA_WHEELDIAMETER = WheelDiameter.DIAMETER_20_INCHES;
     private static final int CAMRY_MAX_SPEED = 240;
     private static final int SOLARA_MAX_SPEED = 200;
     private static final int HIANCE_MAX_SPEED = 180;
@@ -23,6 +25,10 @@ public class AssemblyLine {
     private static final int DYNA_MAX_LOAD_CAPACITY_KG = 5000;
     private Country country;
     private ComponentFactory componentFactory;
+    private GasTank gasTank = componentFactory.createGasTank();
+    private Engine engine = componentFactory.createEngine();
+    private Electric electric = componentFactory.createElectric();
+    private Headlights headlights = componentFactory.createHeadlights();
 
     public AssemblyLine(Country country, ComponentFactory componentFactory) {
         this.country = country;
@@ -30,7 +36,7 @@ public class AssemblyLine {
     }
 
     /**
-     * Создает экземпляр Camry.
+     * Создает экземпляр автомобиля Camry.
      *
      * @param color цвет автомобиля.
      * @param price цена автомобиля.
@@ -38,16 +44,18 @@ public class AssemblyLine {
      * @throws CountyFactoryNotEqualException если страна производителя компонентов не совпадает со страной сборки.
      */
     public Camry createCamry(Color color, BigDecimal price) throws CountyFactoryNotEqualException {
-        if (componentFactory.getCountry().equals(country)) {
-            return new Camry(color, CAMRY_MAX_SPEED, TransmissionType.AUTOMATIC,
-                    componentFactory.createAllComponents(WheelDiameter.DIAMETER_17_INCHES),
-                    price, country);
+        if (!componentFactory.getCountry().equals(country)) {
+            throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
+
+        Wheel[] wheels = componentFactory.createWheels(CAMRY_WHEELDIAMETER);
+
+        return new Camry(color, CAMRY_MAX_SPEED, TransmissionType.AUTOMATIC, wheels,
+                gasTank, engine, electric, headlights, price, Country.JAPAN);
     }
 
     /**
-     * Создает экземпляр Solara.
+     * Создает экземпляр автомобиля Solara.
      *
      * @param color цвет автомобиля.
      * @param price цена автомобиля.
@@ -55,16 +63,18 @@ public class AssemblyLine {
      * @throws CountyFactoryNotEqualException если страна производителя компонентов не совпадает со страной сборки.
      */
     public Solara createSolara(Color color, BigDecimal price) throws CountyFactoryNotEqualException {
-        if (componentFactory.getCountry().equals(country)) {
-            return new Solara(color, SOLARA_MAX_SPEED, TransmissionType.ROBOT,
-                    componentFactory.createAllComponents(WheelDiameter.DIAMETER_16_INCHES),
-                    price, country);
+        if (!componentFactory.getCountry().equals(country)) {
+            throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
+
+        Wheel[] wheels = componentFactory.createWheels(SOLARA_WHEELDIAMETER);
+
+        return new Solara(color, SOLARA_MAX_SPEED, TransmissionType.MANUAL, wheels,
+                gasTank, engine, electric, headlights, price, Country.AUSTRALIA);
     }
 
     /**
-     * Создает экземпляр Hiance.
+     * Создает экземпляр автомобиля Hiance.
      *
      * @param color цвет автомобиля.
      * @param price цена автомобиля.
@@ -72,16 +82,19 @@ public class AssemblyLine {
      * @throws CountyFactoryNotEqualException если страна производителя компонентов не совпадает со страной сборки.
      */
     public Hiance createHiance(Color color, BigDecimal price) throws CountyFactoryNotEqualException {
-        if (componentFactory.getCountry().equals(country)) {
-            return new Hiance(color, HIANCE_MAX_SPEED, TransmissionType.MANUAL,
-                    componentFactory.createAllComponents(WheelDiameter.DIAMETER_20_INCHES),
-                    price, country, HIANCE_MAX_LOAD_CAPACITY_KG);
+        if (!componentFactory.getCountry().equals(country)) {
+            throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
+
+        Wheel[] wheels = componentFactory.createWheels(HIANCE_WHEELDIAMETER);
+        Wheel wheel = componentFactory.createWheel(HIANCE_WHEELDIAMETER);
+
+        return new Hiance(color, HIANCE_MAX_SPEED, TransmissionType.MANUAL, wheels, gasTank,
+                engine, electric, headlights, price, Country.RUSSIA, HIANCE_MAX_LOAD_CAPACITY_KG, wheel);
     }
 
     /**
-     * Создает экземпляр Dyna.
+     * Создает экземпляр автомобиля Dyna.
      *
      * @param color цвет автомобиля.
      * @param price цена автомобиля.
@@ -89,11 +102,14 @@ public class AssemblyLine {
      * @throws CountyFactoryNotEqualException если страна производителя компонентов не совпадает со страной сборки.
      */
     public Dyna createDyna(Color color, BigDecimal price) throws CountyFactoryNotEqualException {
-        if (componentFactory.getCountry().equals(country)) {
-            return new Dyna(color, DYNA_MAX_SPEED, TransmissionType.MANUAL,
-                    componentFactory.createAllComponents(WheelDiameter.DIAMETER_20_INCHES),
-                    price, country, DYNA_MAX_LOAD_CAPACITY_KG);
+        if (!componentFactory.getCountry().equals(country)) {
+            throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
         }
-        throw new CountyFactoryNotEqualException(componentFactory.getCountry(), country);
+
+        Wheel[] wheels = componentFactory.createWheels(DYNA_WHEELDIAMETER);
+
+        return new Dyna(color, DYNA_MAX_SPEED, TransmissionType.MANUAL, wheels, gasTank,
+                engine, electric, headlights, price, Country.CHINA, DYNA_MAX_LOAD_CAPACITY_KG);
     }
+
 }

@@ -22,34 +22,7 @@ public class Component {
         this.headlights = headlights;
     }
 
-    /**
-     * Проверяет исправность всех компонентов автомобиля.
-     *
-     * @return true, если все компоненты исправны.
-     * @throws StartCarException если один или несколько компонентов не работают.
-     */
-    public boolean checkAllComponentsWorking() throws StartCarException {
-        for (Wheel wheel : wheels) {
-            if (wheel == null || wheel.isPunctured()) {
-                throw new StartCarException("Ошибка: Одно или несколько колес не в порядке");
-            }
-        }
 
-        if (gasTank.getFuelAmount() <= 0) {
-            throw new StartCarException("Ошибка: Недостаточно топлива");
-        }
-        if (!engine.isFunctional()) {
-            throw new StartCarException("Ошибка: Двигатель не работает");
-        }
-        if (!electric.isFunctional()) {
-            throw new StartCarException("Ошибка: Электрика не работает");
-        }
-        if (!headlights.isFunctional()) {
-            throw new StartCarException("Ошибка: Фары не работают");
-        }
-
-        return true;
-    }
 
 
     public Wheel[] getWheels() {
