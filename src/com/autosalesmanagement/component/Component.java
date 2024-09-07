@@ -2,6 +2,9 @@ package com.autosalesmanagement.component;
 
 import com.autosalesmanagement.exceptions.StartCarException;
 
+/**
+ * Компоненты машины.
+ */
 public class Component {
     private Wheel[] wheels;
     private GasTank gasTank;
