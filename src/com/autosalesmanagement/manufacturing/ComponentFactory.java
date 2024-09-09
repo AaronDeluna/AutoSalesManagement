@@ -8,7 +8,6 @@ import com.autosalesmanagement.component.WheelDiameter;
  */
 public class ComponentFactory {
     private static final int WHEEL_COUNT = 4;
-    private static final boolean IS_PUNCTURED = false;
     private Country country;
 
     public ComponentFactory(Country country) {
@@ -18,29 +17,29 @@ public class ComponentFactory {
     public Wheel[] createWheels(WheelDiameter wheelDiameter) {
         Wheel[] wheels = new Wheel[WHEEL_COUNT];
         for (int i = 0; i < wheels.length; i++) {
-            wheels[i] = new Wheel(IS_PUNCTURED, wheelDiameter);
+            wheels[i] = new Wheel(wheelDiameter);
         }
         return wheels;
     }
 
     public Wheel createWheel(WheelDiameter wheelDiameter) {
-        return new Wheel(IS_PUNCTURED, wheelDiameter);
+        return new Wheel(wheelDiameter);
     }
 
     public GasTank createGasTank() {
-        return new GasTank(0);
+        return new GasTank();
     }
 
     public Engine createEngine() {
-        return new Engine(true);
+        return new Engine();
     }
 
     public Electric createElectric() {
-        return new Electric(true);
+        return new Electric();
     }
 
     public Headlights createHeadlights() {
-        return new Headlights(true);
+        return new Headlights();
     }
 
     public Country getCountry() {

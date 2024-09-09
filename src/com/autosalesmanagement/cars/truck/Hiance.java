@@ -10,7 +10,7 @@ import java.math.BigDecimal;
  * Наследует от Truck и добавляет поддержку наличия запасного колеса.
  */
 public class Hiance extends Truck {
-    private Wheel spareWheel; //Сделать класс
+    private Wheel spareWheel;
 
     public Hiance(Color color, int maxSpeed, TransmissionType transmissionType,
                   Wheel[] wheels, GasTank gasTank, Engine engine, Electric electric,

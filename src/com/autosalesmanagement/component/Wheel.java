@@ -1,11 +1,10 @@
 package com.autosalesmanagement.component;
 
 public class Wheel {
-    private boolean isPunctured;
+    private boolean isPunctured = false;
     private WheelDiameter diameter;
 
-    public Wheel(boolean isPunctured, WheelDiameter diameter) {
-        this.isPunctured = isPunctured;
+    public Wheel(WheelDiameter diameter) {
         this.diameter = diameter;
     }
 
