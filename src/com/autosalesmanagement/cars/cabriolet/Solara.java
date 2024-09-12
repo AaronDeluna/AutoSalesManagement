@@ -1,9 +1,7 @@
 package com.autosalesmanagement.cars.cabriolet;
 
-import com.autosalesmanagement.component.Component;
-import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.component.*;
 import com.autosalesmanagement.manufacturing.Country;
-import com.autosalesmanagement.component.TransmissionType;
 
 import java.math.BigDecimal;
 
@@ -12,27 +10,28 @@ import java.math.BigDecimal;
  * Наследует от Cabriolet и добавляет поддержку мини-холодильника.
  */
 public class Solara extends Cabriolet {
-    private boolean hasMiniFridge = true;
+    private MiniFridge miniFridge;
 
-    public Solara(Color color, int maxSpeed,
-                  TransmissionType transmissionType,
-                  Component component, BigDecimal price, Country country) {
-        super(color, maxSpeed, transmissionType, component, price, country);
+    public Solara(Color color, int maxSpeed, TransmissionType transmissionType,
+                  Wheel[] wheels, GasTank gasTank, Engine engine, Electric electric,
+                  Headlights headlights, BigDecimal price, Country country) {
+        super(color, maxSpeed, transmissionType, wheels, gasTank, engine, electric, headlights, price, country);
+        this.miniFridge = new MiniFridge();
     }
 
     public void coolDrink() {
-        if (this.hasMiniFridge) {
+        if (miniFridge != null) {
             System.out.println("Напиток охлажден");
         } else {
             System.out.println("Нет холодильника");
         }
     }
 
-    public boolean isHasMiniFridge() {
-        return hasMiniFridge;
+    public MiniFridge getMiniFridge() {
+        return miniFridge;
     }
 
-    public void setHasMiniFridge(boolean hasMiniFridge) {
-        this.hasMiniFridge = hasMiniFridge;
+    public void setMiniFridge(MiniFridge miniFridge) {
+        this.miniFridge = miniFridge;
     }
 }

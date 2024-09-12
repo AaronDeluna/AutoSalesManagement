@@ -1,9 +1,7 @@
 package com.autosalesmanagement.cars.passengercar;
 
-import com.autosalesmanagement.component.Component;
-import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.component.*;
 import com.autosalesmanagement.manufacturing.Country;
-import com.autosalesmanagement.component.TransmissionType;
 
 import java.math.BigDecimal;
 
@@ -11,29 +9,29 @@ import java.math.BigDecimal;
  * Класс Camry представляет конкретную модель пассажирского автомобиля.
  * Наследует от PassengerCar и добавляет поддержку USB-порта.
  */
-public class Camry extends PassengerСar {
-    private boolean hasUsbPort = true;
+public class Camry extends PassengerCar {
+    private UsbPort usbPort;
 
-    public Camry(Color color, int maxSpeed,
-                 TransmissionType transmissionType,
-                 Component component, BigDecimal price,
-                 Country country) {
-        super(color, maxSpeed, transmissionType, component, price, country);
+    public Camry(Color color, int maxSpeed, TransmissionType transmissionType,
+                 Wheel[] wheels, GasTank gasTank, Engine engine, Electric electric,
+                 Headlights headlights, BigDecimal price, Country country) {
+        super(color, maxSpeed, transmissionType, wheels, gasTank, engine, electric, headlights, price, country);
+        this.usbPort = new UsbPort();
     }
 
     public void connectMusic() {
-        if (this.hasUsbPort) {
+        if (usbPort != null) {
             System.out.println("Подключена музыка");
         } else {
             System.out.println("Нет Usb порта");
         }
     }
 
-    public boolean isHasUsbPort() {
-        return hasUsbPort;
+    public UsbPort getUsbPort() {
+        return usbPort;
     }
 
-    public void setHasUsbPort(boolean hasUsbPort) {
-        this.hasUsbPort = hasUsbPort;
+    public void setUsbPort(UsbPort usbPort) {
+        this.usbPort = usbPort;
     }
 }

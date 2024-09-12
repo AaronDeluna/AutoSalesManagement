@@ -1,9 +1,7 @@
 package com.autosalesmanagement.cars;
 
-import com.autosalesmanagement.component.Component;
-import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.component.*;
 import com.autosalesmanagement.manufacturing.Country;
-import com.autosalesmanagement.component.TransmissionType;
 import com.autosalesmanagement.exceptions.StartCarException;
 
 import java.math.BigDecimal;
@@ -16,44 +14,58 @@ public abstract class Car {
     protected Color color;
     protected int maxSpeed;
     protected TransmissionType transmissionType;
-    protected boolean isMoving = false;
-    protected Component component;
+    protected boolean isMoving;
+    protected Wheel[] wheels;
+    protected GasTank gasTank;
+    protected Engine engine;
+    protected Electric electric;
+    protected Headlights headlights;
     protected BigDecimal price;
     protected Country country;
 
     /**
-     * Конструктор автомобиля.
+     * Конструктор для создания экземпляра автомобиля.
      *
-     * @param color            цвет автомобиля
-     * @param maxSpeed         максимальная скорость
-     * @param transmissionType тип трансмиссии
-     * @param component        компонент автомобиля
-     * @param country          страна производства
+     * @param color            Цвет автомобиля.
+     * @param maxSpeed         Максимальная скорость автомобиля.
+     * @param transmissionType Тип трансмиссии (автоматическая или механическая).
+     * @param wheels           Массив колес автомобиля.
+     * @param gasTank          Топливный бак автомобиля.
+     * @param engine           Двигатель автомобиля.
+     * @param electric         Электросистема автомобиля.
+     * @param headlights       Фары автомобиля.
+     * @param price            Цена автомобиля.
+     * @param country          Страна-производитель автомобиля.
      */
-    public Car(Color color, int maxSpeed,
-               TransmissionType transmissionType, Component component,
-               BigDecimal price, Country country) {
+    public Car(Color color, int maxSpeed, TransmissionType transmissionType,
+               Wheel[] wheels, GasTank gasTank, Engine engine,
+               Electric electric, Headlights headlights, BigDecimal price, Country country) {
         this.color = color;
         this.maxSpeed = maxSpeed;
         this.transmissionType = transmissionType;
-        this.component = component;
+        this.wheels = wheels;
+        this.gasTank = gasTank;
+        this.engine = engine;
+        this.electric = electric;
+        this.headlights = headlights;
         this.price = price;
         this.country = country;
     }
 
     /**
      * Запускает движение автомобиля.
-     * Если все компоненты автомобиля исправны, машина начинает двигаться.
-     * В случае проблемы с компонентами выбрасывается исключение StartCarException.
+     * Если все компоненты автомобиля исправны, автомобиль начинает движение.
+     * В случае неисправности компонента выбрасывается исключение StartCarException.
      */
     public void startMoving() {
         try {
-            if (component.checkAllComponentsWorking()) {
+            if (checkAllComponentsWorking()) {
                 System.out.println("Машина поехала!");
                 this.isMoving = true;
             }
         } catch (StartCarException e) {
             System.out.println(e.getMessage());
+            this.isMoving = false;
         }
     }
 
@@ -66,10 +78,38 @@ public abstract class Car {
         this.isMoving = false;
     }
 
-
     public void turnOnHeadlights() {
         System.out.println("Фары включены!");
-        component.setHeadlights(true);
+        headlights.setFunctional(true);
+    }
+
+    /**
+     * Проверяет исправность всех компонентов автомобиля.
+     *
+     * @return true, если все компоненты исправны.
+     * @throws StartCarException если один или несколько компонентов не работают.
+     */
+    private boolean checkAllComponentsWorking() throws StartCarException {
+        for (Wheel wheel : wheels) {
+            if (wheel == null || wheel.isPunctured()) {
+                throw new StartCarException("Ошибка: Одно или несколько колес не в порядке");
+            }
+        }
+
+        if (gasTank.getFuelAmount() <= 0) {
+            throw new StartCarException("Ошибка: Недостаточно топлива");
+        }
+        if (!engine.isFunctional()) {
+            throw new StartCarException("Ошибка: Двигатель не работает");
+        }
+        if (!electric.isFunctional()) {
+            throw new StartCarException("Ошибка: Электрика не работает");
+        }
+        if (!headlights.isFunctional()) {
+            throw new StartCarException("Ошибка: Фары не работают");
+        }
+
+        return true;
     }
 
     public Color getColor() {
@@ -104,12 +144,44 @@ public abstract class Car {
         isMoving = moving;
     }
 
-    public Component getComponent() {
-        return component;
+    public Wheel[] getWheels() {
+        return wheels;
     }
 
-    public void setComponent(Component component) {
-        this.component = component;
+    public void setWheels(Wheel[] wheels) {
+        this.wheels = wheels;
+    }
+
+    public GasTank getGasTank() {
+        return gasTank;
+    }
+
+    public void setGasTank(GasTank gasTank) {
+        this.gasTank = gasTank;
+    }
+
+    public Engine getEngine() {
+        return engine;
+    }
+
+    public void setEngine(Engine engine) {
+        this.engine = engine;
+    }
+
+    public Electric getElectric() {
+        return electric;
+    }
+
+    public void setElectric(Electric electric) {
+        this.electric = electric;
+    }
+
+    public Headlights getHeadlights() {
+        return headlights;
+    }
+
+    public void setHeadlights(Headlights headlights) {
+        this.headlights = headlights;
     }
 
     public BigDecimal getPrice() {

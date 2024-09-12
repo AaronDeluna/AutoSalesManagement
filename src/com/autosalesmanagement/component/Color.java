@@ -1,5 +1,8 @@
 package com.autosalesmanagement.component;
 
 public enum Color {
-    RED;
+    RED,
+    BLACK,
+    WHITE,
+    ;
 }

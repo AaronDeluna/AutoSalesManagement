@@ -1,33 +1,41 @@
 package com.autosalesmanagement;
 
+import com.autosalesmanagement.cars.cabriolet.Solara;
 import com.autosalesmanagement.cars.passengercar.Camry;
-import com.autosalesmanagement.component.*;
+import com.autosalesmanagement.cars.truck.Dyna;
+import com.autosalesmanagement.cars.truck.Hiance;
 import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.exceptions.CountyFactoryNotEqualException;
+import com.autosalesmanagement.manufacturing.AssemblyLine;
+import com.autosalesmanagement.manufacturing.ComponentFactory;
 import com.autosalesmanagement.manufacturing.Country;
-import com.autosalesmanagement.component.TransmissionType;
-import com.autosalesmanagement.component.WheelDiameter;
+import com.autosalesmanagement.warehouse.CarType;
+import com.autosalesmanagement.warehouse.Warehouse;
 
 import java.math.BigDecimal;
 
 public class Runner {
     public static void main(String[] args) {
-        Wheel[] wheels = new Wheel[4];
-        for (int i = 0; i < 4; i++) {
-            wheels[i] = new Wheel(true, WheelDiameter.DIAMETER_17_INCHES);
+        ComponentFactory componentFactory = new ComponentFactory(Country.JAPAN);
+        AssemblyLine assemblyLine = new AssemblyLine(Country.JAPAN, componentFactory);
+        Warehouse warehouse = new Warehouse();
+
+        try {
+            Camry camry = assemblyLine.createCamry(Color.BLACK, new BigDecimal(10_000));
+            Solara solara = assemblyLine.createSolara(Color.WHITE, new BigDecimal(12_000));
+            Hiance hiance = assemblyLine.createHiance(Color.BLACK, new BigDecimal(15_000));
+            Dyna dyna = assemblyLine.createDyna(Color.BLACK, new BigDecimal(22_000));
+            warehouse.addCar(CarType.CAMRY, camry);
+            warehouse.addCar(CarType.SOLARA, solara);
+            warehouse.addCar(CarType.HIANCE, hiance);
+            warehouse.addCar(CarType.DYNA, dyna);
+
+
+            System.out.println(warehouse.takeCar(CarType.DYNA, dyna, assemblyLine).getPrice());
+            System.out.println(warehouse.takeCar(CarType.DYNA, dyna, assemblyLine).getPrice());
+        } catch (CountyFactoryNotEqualException e) {
+            System.out.println(e.getMessage());
         }
-        GasTank gasTank = new GasTank(10);
-        Engine engine = new Engine(true);
-        Electric electric = new Electric(true);
-        Headlights headlights = new Headlights(true);
-        Component component = new Component(wheels, gasTank, engine, electric, headlights);
-        Camry camry = new Camry(Color.RED, 200,
-                TransmissionType.AUTOMATIC, component,
-                new BigDecimal(20_000), Country.JAPAN);
-        camry.startMoving();
-        camry.stopMoving();
-        camry.turnOnHeadlights();
-        camry.disableCruiseControl();
-        camry.enableCruiseControl();
-        camry.connectMusic();
+
     }
 }

@@ -1,9 +1,7 @@
 package com.autosalesmanagement.cars.passengercar;
 
-import com.autosalesmanagement.component.Component;
-import com.autosalesmanagement.component.Color;
+import com.autosalesmanagement.component.*;
 import com.autosalesmanagement.manufacturing.Country;
-import com.autosalesmanagement.component.TransmissionType;
 import com.autosalesmanagement.cars.Car;
 
 import java.math.BigDecimal;
@@ -12,14 +10,13 @@ import java.math.BigDecimal;
  * Абстрактный класс PassengerCar.
  * Наследует от Car и добавляет поддержку круиз-контроля.
  */
-public abstract class PassengerСar extends Car {
+public abstract class PassengerCar extends Car {
     protected boolean hasCruiseControl = true;
 
-    public PassengerСar(Color color, int maxSpeed,
-                        TransmissionType transmissionType,
-                        Component component, BigDecimal price,
-                        Country country) {
-        super(color, maxSpeed, transmissionType, component, price, country);
+    public PassengerCar(Color color, int maxSpeed, TransmissionType transmissionType,
+                        Wheel[] wheels, GasTank gasTank, Engine engine, Electric electric,
+                        Headlights headlights, BigDecimal price, Country country) {
+        super(color, maxSpeed, transmissionType, wheels, gasTank, engine, electric, headlights, price, country);
     }
 
     public void disableCruiseControl() {
@@ -32,7 +29,7 @@ public abstract class PassengerСar extends Car {
     }
 
     public void enableCruiseControl() {
-        if (this.hasCruiseControl) {
+        if (!this.hasCruiseControl) {
             System.out.println("Вы включили круиз-контроль");
             this.hasCruiseControl = true;
         } else {
