@@ -96,6 +96,6 @@ public class Warehouse {
      * @return новая цена автомобиля с учетом увеличения на 10%
      */
     private BigDecimal addPercentageToNewCar(BigDecimal price) {
-        return price.multiply(BigDecimal.valueOf(1.1));
+        return price.multiply(BigDecimal.valueOf(NEW_CAR_ASSEMBLY_COST_INCREASE_10_PERCENT));
     }
 }
