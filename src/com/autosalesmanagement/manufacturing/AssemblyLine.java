@@ -1,5 +1,6 @@
 package com.autosalesmanagement.manufacturing;
 
+import com.autosalesmanagement.cars.Car;
 import com.autosalesmanagement.cars.cabriolet.Solara;
 import com.autosalesmanagement.cars.passengercar.Camry;
 import com.autosalesmanagement.cars.truck.Dyna;
@@ -55,7 +56,7 @@ public class AssemblyLine {
         Wheel[] wheels = componentFactory.createWheels(CAMRY_WHEELDIAMETER);
 
         return new Camry(color, CAMRY_MAX_SPEED, TransmissionType.AUTOMATIC, wheels,
-                gasTank, engine, electric, headlights, price, Country.JAPAN);
+                gasTank, engine, electric, headlights, price, country);
     }
 
     /**
@@ -74,7 +75,7 @@ public class AssemblyLine {
         Wheel[] wheels = componentFactory.createWheels(SOLARA_WHEELDIAMETER);
 
         return new Solara(color, SOLARA_MAX_SPEED, TransmissionType.MANUAL, wheels,
-                gasTank, engine, electric, headlights, price, Country.AUSTRALIA);
+                gasTank, engine, electric, headlights, price, country);
     }
 
     /**
@@ -94,7 +95,7 @@ public class AssemblyLine {
         Wheel wheel = componentFactory.createWheel(HIANCE_WHEELDIAMETER);
 
         return new Hiance(color, HIANCE_MAX_SPEED, TransmissionType.MANUAL, wheels, gasTank,
-                engine, electric, headlights, price, Country.RUSSIA, HIANCE_MAX_LOAD_CAPACITY_KG, wheel);
+                engine, electric, headlights, price, country, HIANCE_MAX_LOAD_CAPACITY_KG, wheel);
     }
 
     /**
@@ -113,7 +114,6 @@ public class AssemblyLine {
         Wheel[] wheels = componentFactory.createWheels(DYNA_WHEELDIAMETER);
 
         return new Dyna(color, DYNA_MAX_SPEED, TransmissionType.MANUAL, wheels, gasTank,
-                engine, electric, headlights, price, Country.CHINA, DYNA_MAX_LOAD_CAPACITY_KG);
+                engine, electric, headlights, price, country, DYNA_MAX_LOAD_CAPACITY_KG);
     }
-
 }

@@ -9,6 +9,7 @@ import com.autosalesmanagement.exceptions.CountyFactoryNotEqualException;
 import com.autosalesmanagement.manufacturing.AssemblyLine;
 import com.autosalesmanagement.manufacturing.ComponentFactory;
 import com.autosalesmanagement.manufacturing.Country;
+import com.autosalesmanagement.warehouse.CarType;
 import com.autosalesmanagement.warehouse.Warehouse;
 
 import java.math.BigDecimal;
@@ -24,15 +25,14 @@ public class Runner {
             Solara solara = assemblyLine.createSolara(Color.WHITE, new BigDecimal(12_000));
             Hiance hiance = assemblyLine.createHiance(Color.BLACK, new BigDecimal(15_000));
             Dyna dyna = assemblyLine.createDyna(Color.BLACK, new BigDecimal(22_000));
-            warehouse.addPassengerCar(camry);
-            warehouse.addCabriolet(solara);
-            warehouse.addTruckCar(hiance);
-            warehouse.addTruckCar(dyna);
+            warehouse.addCar(CarType.CAMRY, camry);
+            warehouse.addCar(CarType.SOLARA, solara);
+            warehouse.addCar(CarType.HIANCE, hiance);
+            warehouse.addCar(CarType.DYNA, dyna);
 
-            System.out.println(warehouse.getPassengerCar(camry).toString());
-            System.out.println(warehouse.getCabriolet(solara).toString());
-            System.out.println(warehouse.getTruckList(hiance).toString());
-            System.out.println(warehouse.getTruckList(dyna).toString());
+
+            System.out.println(warehouse.takeCar(CarType.DYNA, dyna, assemblyLine).getPrice());
+            System.out.println(warehouse.takeCar(CarType.DYNA, dyna, assemblyLine).getPrice());
         } catch (CountyFactoryNotEqualException e) {
             System.out.println(e.getMessage());
         }
