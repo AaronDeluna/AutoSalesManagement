@@ -6,7 +6,7 @@ import com.auto_sales_management.cars.passengercar.Camry;
 import com.auto_sales_management.cars.truck.Dyna;
 import com.auto_sales_management.cars.truck.Hiance;
 import com.auto_sales_management.component.Color;
-import com.auto_sales_management.exceptions.CarNotAvailableException;
+import com.auto_sales_management.exceptions.CarPriceTooLowException;
 import com.auto_sales_management.exceptions.CountyFactoryNotEqualException;
 import com.auto_sales_management.managment.Customer;
 import com.auto_sales_management.managment.Manager;
@@ -23,9 +23,7 @@ public class Runner {
         ComponentFactory componentFactory = new ComponentFactory(Country.JAPAN);
         Warehouse warehouse = new Warehouse();
         Customer customer1 = new Customer("Artur", new BigDecimal(11_000));
-        Customer customer2 = new Customer("Artur", new BigDecimal(20_000));
-        Manager manager = new Manager(warehouse, customer1);
-        Manager manager2 = new Manager(warehouse, customer2);
+        Customer customer2 = new Customer("Mason", new BigDecimal(10_000));
 
         try {
             AssemblyLine assemblyLine = new AssemblyLine(Country.JAPAN, componentFactory);
@@ -38,9 +36,25 @@ public class Runner {
             warehouse.addCar(CarType.HIANCE, hiance);
             warehouse.addCar(CarType.DYNA, dyna);
 
-            System.out.println(manager.salleCar(customer1, assemblyLine).getGasTank());
-            System.out.println(manager2.salleCar(customer2, assemblyLine).getGasTank());
 
+            Manager manager = new Manager(warehouse, assemblyLine);
+            try {
+                System.out.println(manager.sellCar(customer1));
+            } catch (CarPriceTooLowException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                System.out.println(manager.sellCar(customer2));
+            } catch (CarPriceTooLowException e) {
+                System.out.println(e.getMessage());
+            }
+
+            try {
+                System.out.println(manager.sellCar(customer1));
+            } catch (CarPriceTooLowException e) {
+                System.out.println(e.getMessage());
+            }
         } catch (CountyFactoryNotEqualException e) {
             System.out.println(e.getMessage());
         }
