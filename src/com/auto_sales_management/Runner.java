@@ -8,6 +8,7 @@ import com.auto_sales_management.cars.truck.Hiance;
 import com.auto_sales_management.component.Color;
 import com.auto_sales_management.exceptions.CarPriceTooLowException;
 import com.auto_sales_management.exceptions.CountyFactoryNotEqualException;
+import com.auto_sales_management.managment.Cashier;
 import com.auto_sales_management.managment.Customer;
 import com.auto_sales_management.managment.Manager;
 import com.auto_sales_management.manufacturing.AssemblyLine;
@@ -22,8 +23,16 @@ public class Runner {
     public static void main(String[] args) {
         ComponentFactory componentFactory = new ComponentFactory(Country.JAPAN);
         Warehouse warehouse = new Warehouse();
-        Customer customer1 = new Customer("Artur", new BigDecimal(11_000));
-        Customer customer2 = new Customer("Mason", new BigDecimal(10_000));
+        Customer[] customers = {
+                new Customer("Artur", new BigDecimal(10_000)),
+                new Customer("Mason", new BigDecimal(12_000)),
+                new Customer("Mason", new BigDecimal(15_000)),
+                new Customer("Mason", new BigDecimal(22_000)),
+                new Customer("Mason", new BigDecimal(11_000)),
+                new Customer("Mason", new BigDecimal(13_200)),
+                new Customer("Mason", new BigDecimal(8_000)),
+                new Customer("Mason", new BigDecimal(30_000))
+        };
 
         try {
             AssemblyLine assemblyLine = new AssemblyLine(Country.JAPAN, componentFactory);
@@ -38,23 +47,18 @@ public class Runner {
 
 
             Manager manager = new Manager(warehouse, assemblyLine);
-            try {
-                System.out.println(manager.sellCar(customer1));
-            } catch (CarPriceTooLowException e) {
-                System.out.println(e.getMessage());
+            Cashier cashier = new Cashier();
+
+            for (Customer customer : customers) {
+                try {
+                    cashier.processOrderAndRecordIncome(manager.sellCar(customer));
+                } catch (CarPriceTooLowException e) {
+                    System.out.println(e.getMessage());
+                }
             }
 
-            try {
-                System.out.println(manager.sellCar(customer2));
-            } catch (CarPriceTooLowException e) {
-                System.out.println(e.getMessage());
-            }
+            System.out.println(cashier.getIncomeList());
 
-            try {
-                System.out.println(manager.sellCar(customer1));
-            } catch (CarPriceTooLowException e) {
-                System.out.println(e.getMessage());
-            }
         } catch (CountyFactoryNotEqualException e) {
             System.out.println(e.getMessage());
         }
