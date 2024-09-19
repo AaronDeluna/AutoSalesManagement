@@ -48,6 +48,13 @@ public class Warehouse {
         return null;
     }
 
+    /**
+     * Получает количество автомобилей определенного типа.
+     *
+     * @param carType тип автомобиля, для которого требуется узнать количество.
+     * @return количество автомобилей данного типа.
+     * @throws CarNotAvailableException если информации по данному типу автомобиля нет.
+     */
     public int getCarTypeCount(CarType carType) throws CarNotAvailableException {
         if (carTypeCount.containsKey(carType)) {
             return carTypeCount.get(carType);

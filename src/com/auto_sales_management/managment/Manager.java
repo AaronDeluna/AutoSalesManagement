@@ -8,13 +8,18 @@ import com.auto_sales_management.manufacturing.AssemblyLine;
 import com.auto_sales_management.warehouse.CarType;
 import com.auto_sales_management.warehouse.Warehouse;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.*;
 
 public class Manager {
     private static final double NEW_CAR_ASSEMBLY_COST_INCREASE_10_PERCENT = 1.1;
+    private static final String FORMAT = "%-15s %-15s %-15s";
+    private static final String REPORT_FILE_NAME = "reports.txt";
     private String name;
-    private Report report = new Report();
+    private List<Report> reportList = new ArrayList<>();
     private Warehouse warehouse;
     private AssemblyLine assemblyLine;
 
@@ -80,7 +85,7 @@ public class Manager {
         Car car = Optional.ofNullable(warehouse.takeCar(carType))
                 .orElseGet(() -> createNewCar(carType));
         if (canAffordCar(customer, car.getPrice())) {
-            report.addSaleCars(this.name, carType);
+            addSaleCarToReport(car.getPrice(), carType);
             return car;
         }
         throw new CarPriceTooLowException("Ошибка: Не хватает денег на новую машину!"
@@ -122,16 +127,65 @@ public class Manager {
         return price.multiply(BigDecimal.valueOf(NEW_CAR_ASSEMBLY_COST_INCREASE_10_PERCENT));
     }
 
-
+    /**
+     * Генерирует отчет и записывает его в файл.
+     *
+     * @throws IOException если возникает ошибка при записи в файл.
+     */
     public void generateReport() {
-        List<CarType> reports = report.getSaleCars();
+        try {
+            writeToFile(REPORT_FILE_NAME, name, reportList);
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
     }
 
-    public String getName() {
-        return name;
+    /**
+     * Записывает отчет в указанный файл.
+     *
+     * @param fileName имя файла, в который будет записан отчет.
+     * @param name имя менеджера, которое будет включено в отчет.
+     * @param reportList список отчетов, содержащий данные о продажах.
+     * @throws IOException если возникает ошибка при записи в файл.
+     */
+    public void writeToFile(String fileName, String name, List<Report> reportList) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
+            BigDecimal income = BigDecimal.ZERO;
+            BigDecimal expenses = BigDecimal.ZERO;
+            writer.write("Имя менеджера: " + name);
+            writer.newLine();
+            writer.write(String.format(FORMAT, "Модель", "Продажа", "Себестоимость"));
+            writer.newLine();
+            writer.write(String.format(FORMAT, "-------", "--------", "-----------"));
+            writer.newLine();
+            for (Report report : reportList) {
+                income = income.add(report.getSallePrise());
+                expenses = expenses.add(report.getCostPrice());
+                writer.write(String.format(FORMAT,
+                        report.getSalesCarType(),
+                        String.format("%.2f", report.getSallePrise()),
+                        String.format("%.2f", report.getCostPrice())));
+                writer.newLine();
+            }
+            writer.write("\nДоходы: " + income);
+            writer.write("\nРасходы: " + expenses);
+            writer.write("\nПрибыль: " + income.subtract(expenses));
+            writer.newLine();
+        }
     }
 
-    public Report getReport() {
-        return report;
+    /**
+     * Добавляет информацию о продаже автомобиля в отчет.
+     *
+     * @param sallePrice цена продажи автомобиля.
+     * @param carType тип автомобиля, который был продан.
+     */
+    private void addSaleCarToReport(BigDecimal sallePrice, CarType carType) {
+        List<CarPricesByType> costCarPrices = Arrays.asList(CarPricesByType.values());
+        for (CarPricesByType carPricesByType : costCarPrices) {
+            if (carPricesByType.name().equals(carType.name())) {
+                reportList.add(new Report(name, sallePrice, carType, carPricesByType.getPrice()));
+            }
+        }
     }
 }

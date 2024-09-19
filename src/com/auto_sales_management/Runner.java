@@ -42,12 +42,13 @@ public class Runner {
 
             simulateCustomerArrival(cashier, manager);
 
-            System.out.println(manager.getReport());
+            manager.generateReport();
             try {
                 System.out.println(warehouse.getCarTypeCount(CarType.CAMRY));
             } catch (CarNotAvailableException e) {
                 System.out.println(e.getMessage());
             }
+
         } catch (CountyFactoryNotEqualException e) {
             System.out.println(e.getMessage());
         }
@@ -84,7 +85,7 @@ public class Runner {
                 new Customer("Mason", new BigDecimal(11_000)),
                 new Customer("Mason", new BigDecimal(13_200)),
                 new Customer("Mason", new BigDecimal(8_000)),
-                new Customer("Mason", new BigDecimal(30_000))
+                new Customer("Mason", new BigDecimal(30_000)),
         };
     }
 }
