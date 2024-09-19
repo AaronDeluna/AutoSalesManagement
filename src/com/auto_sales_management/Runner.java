@@ -80,12 +80,12 @@ public class Runner {
         return new Customer[] {
                 new Customer("Artur", new BigDecimal(10_000)),
                 new Customer("Mason", new BigDecimal(12_000)),
-                new Customer("Mason", new BigDecimal(15_000)),
-                new Customer("Mason", new BigDecimal(22_000)),
-                new Customer("Mason", new BigDecimal(11_000)),
-                new Customer("Mason", new BigDecimal(13_200)),
-                new Customer("Mason", new BigDecimal(8_000)),
-                new Customer("Mason", new BigDecimal(30_000)),
+                new Customer("Anton", new BigDecimal(15_000)),
+                new Customer("Gena", new BigDecimal(22_000)),
+                new Customer("Mara", new BigDecimal(11_000)),
+                new Customer("Mustafa", new BigDecimal(13_200)),
+                new Customer("Ppd", new BigDecimal(8_000)),
+                new Customer("Goga", new BigDecimal(30_000)),
         };
     }
 }
