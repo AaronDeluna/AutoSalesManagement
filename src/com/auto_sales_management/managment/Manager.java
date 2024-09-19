@@ -13,10 +13,13 @@ import java.util.*;
 
 public class Manager {
     private static final double NEW_CAR_ASSEMBLY_COST_INCREASE_10_PERCENT = 1.1;
+    private String name;
+    private Report report = new Report();
     private Warehouse warehouse;
     private AssemblyLine assemblyLine;
 
-    public Manager(Warehouse warehouse, AssemblyLine assemblyLine) {
+    public Manager(String name, Warehouse warehouse, AssemblyLine assemblyLine) {
+        this.name = name;
         this.warehouse = warehouse;
         this.assemblyLine = assemblyLine;
     }
@@ -77,6 +80,7 @@ public class Manager {
         Car car = Optional.ofNullable(warehouse.takeCar(carType))
                 .orElseGet(() -> createNewCar(carType));
         if (canAffordCar(customer, car.getPrice())) {
+            report.addSaleCars(this.name, carType);
             return car;
         }
         throw new CarPriceTooLowException("Ошибка: Не хватает денег на новую машину!"
@@ -116,5 +120,18 @@ public class Manager {
      */
     private BigDecimal addPercentageToNewCar(BigDecimal price) {
         return price.multiply(BigDecimal.valueOf(NEW_CAR_ASSEMBLY_COST_INCREASE_10_PERCENT));
+    }
+
+
+    public void generateReport() {
+        List<CarType> reports = report.getSaleCars();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Report getReport() {
+        return report;
     }
 }
