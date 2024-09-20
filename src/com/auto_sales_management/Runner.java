@@ -7,12 +7,11 @@ import com.auto_sales_management.cars.truck.Dyna;
 import com.auto_sales_management.cars.truck.Hiance;
 import com.auto_sales_management.component.Color;
 import com.auto_sales_management.exceptions.CarNotAvailableException;
-import com.auto_sales_management.exceptions.CarPriceTooLowException;
+import com.auto_sales_management.exceptions.CustomerHasNoMoneyException;
 import com.auto_sales_management.exceptions.CountyFactoryNotEqualException;
 import com.auto_sales_management.managment.Cashier;
 import com.auto_sales_management.managment.Customer;
 import com.auto_sales_management.managment.Manager;
-import com.auto_sales_management.managment.Report;
 import com.auto_sales_management.manufacturing.AssemblyLine;
 import com.auto_sales_management.manufacturing.ComponentFactory;
 import com.auto_sales_management.manufacturing.Country;
@@ -65,7 +64,7 @@ public class Runner {
         for (Customer customer : customers) {
             try {
                 cashier.processOrderAndRecordIncome(manager.sellCar(customer));
-            } catch (CarPriceTooLowException e) {
+            } catch (CustomerHasNoMoneyException e) {
                 System.out.println(e.getMessage());
             }
         }

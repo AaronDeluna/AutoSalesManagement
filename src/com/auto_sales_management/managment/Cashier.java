@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Cashier {
-    List<BigDecimal> incomeList = new ArrayList<>();
+    private static List<BigDecimal> incomeList = new ArrayList<>();
 
     /**
      * Обрабатывает заказ автомобиля и записывает доход от продажи в список доходов.
