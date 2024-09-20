@@ -3,7 +3,7 @@ package com.auto_sales_management.managment;
 import com.auto_sales_management.cars.Car;
 import com.auto_sales_management.cars.CarPrice;
 import com.auto_sales_management.component.Color;
-import com.auto_sales_management.exceptions.CarPriceTooLowException;
+import com.auto_sales_management.exceptions.CustomerHasNoMoneyException;
 import com.auto_sales_management.manufacturing.AssemblyLine;
 import com.auto_sales_management.warehouse.CarType;
 import com.auto_sales_management.warehouse.Warehouse;
@@ -35,9 +35,9 @@ public class Manager {
      * @param customer     клиент, которому продается машина
      * @return объект Car, если машина доступна на складе или успешно создана
      */
-    public Car sellCar(Customer customer) throws CarPriceTooLowException {
+    public Car sellCar(Customer customer) throws CustomerHasNoMoneyException {
         return findAffordableCar(customer)
-                .orElseThrow(() -> new CarPriceTooLowException("Нет машин по такому бюджету: " + customer.getBudget()));
+                .orElseThrow(() -> new CustomerHasNoMoneyException("Нет машин по такому бюджету: " + customer.getBudget()));
     }
 
     /**
@@ -46,9 +46,9 @@ public class Manager {
      *
      * @param customer клиент, для которого выбирается автомобиль
      * @return Optional, содержащий первый доступный автомобиль, который клиент может себе позволить
-     * @throws CarPriceTooLowException если клиент не может позволить себе ни один из доступных автомобилей
+     * @throws CustomerHasNoMoneyException если клиент не может позволить себе ни один из доступных автомобилей
      */
-    private Optional<Car> findAffordableCar(Customer customer) throws CarPriceTooLowException {
+    private Optional<Car> findAffordableCar(Customer customer) throws CustomerHasNoMoneyException {
         List<CarPrice> carPriceList = Arrays.asList(CarPrice.values());
         List<CarType> carTypeList = Arrays.asList(CarType.values());
         Collections.reverse(carPriceList);
@@ -58,7 +58,7 @@ public class Manager {
                 return Optional.of(getCarFromWarehouseOrCreateNew(customer, carTypeList.get(i)));
             }
         }
-        throw new CarPriceTooLowException("Нет машин по такому бюджету: " + customer.getBudget());
+        throw new CustomerHasNoMoneyException("Нет машин по такому бюджету: " + customer.getBudget());
     }
 
     /**
@@ -79,16 +79,16 @@ public class Manager {
      * @param customer клиент, проверяется его бюджет
      * @param carType тип автомобиля, который требуется
      * @return автомобиль из склада или вновь созданный автомобиль
-     * @throws CarPriceTooLowException если клиент не может позволить себе новый автомобиль
+     * @throws CustomerHasNoMoneyException если клиент не может позволить себе новый автомобиль
      */
-    private Car getCarFromWarehouseOrCreateNew(Customer customer, CarType carType) throws CarPriceTooLowException {
+    private Car getCarFromWarehouseOrCreateNew(Customer customer, CarType carType) throws CustomerHasNoMoneyException {
         Car car = Optional.ofNullable(warehouse.takeCar(carType))
                 .orElseGet(() -> createNewCar(carType));
         if (canAffordCar(customer, car.getPrice())) {
             addSaleCarToReport(car.getPrice(), carType);
             return car;
         }
-        throw new CarPriceTooLowException("Ошибка: Не хватает денег на новую машину!"
+        throw new CustomerHasNoMoneyException("Ошибка: Не хватает денег на новую машину!"
                 + " Цена машины с учетом сборки: " + car.getPrice() + ", Денег у вас: " + customer.getBudget());
     }
 
