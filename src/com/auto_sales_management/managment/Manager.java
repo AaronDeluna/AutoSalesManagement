@@ -16,10 +16,10 @@ import java.util.*;
 
 public class Manager {
     private static final double NEW_CAR_ASSEMBLY_COST_INCREASE_10_PERCENT = 1.1;
-    private static final String FORMAT = "%-15s %-15s %-15s";
     private static final String REPORT_FILE_NAME = "reports.txt";
     private String name;
     private List<Report> reportList = new ArrayList<>();
+    private FileManager reportFileWriter = new FileManager();
     private Warehouse warehouse;
     private AssemblyLine assemblyLine;
 
@@ -134,43 +134,9 @@ public class Manager {
      */
     public void generateReport() {
         try {
-            writeToFile(REPORT_FILE_NAME, name, reportList);
+            reportFileWriter.writeToFile(REPORT_FILE_NAME, name, reportList);
         } catch (IOException e) {
             System.out.println(e.getMessage());
-        }
-    }
-
-    /**
-     * Записывает отчет в указанный файл.
-     *
-     * @param fileName имя файла, в который будет записан отчет.
-     * @param name имя менеджера, которое будет включено в отчет.
-     * @param reportList список отчетов, содержащий данные о продажах.
-     * @throws IOException если возникает ошибка при записи в файл.
-     */
-    public void writeToFile(String fileName, String name, List<Report> reportList) throws IOException {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true))) {
-            BigDecimal income = BigDecimal.ZERO;
-            BigDecimal expenses = BigDecimal.ZERO;
-            writer.write("Имя менеджера: " + name);
-            writer.newLine();
-            writer.write(String.format(FORMAT, "Модель", "Продажа", "Себестоимость"));
-            writer.newLine();
-            writer.write(String.format(FORMAT, "-------", "--------", "-----------"));
-            writer.newLine();
-            for (Report report : reportList) {
-                income = income.add(report.getSallePrise());
-                expenses = expenses.add(report.getCostPrice());
-                writer.write(String.format(FORMAT,
-                        report.getSalesCarType(),
-                        String.format("%.2f", report.getSallePrise()),
-                        String.format("%.2f", report.getCostPrice())));
-                writer.newLine();
-            }
-            writer.write("\nДоходы: " + income);
-            writer.write("\nРасходы: " + expenses);
-            writer.write("\nПрибыль: " + income.subtract(expenses));
-            writer.newLine();
         }
     }
 
